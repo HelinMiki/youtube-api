@@ -20,11 +20,12 @@ class App extends React.Component {
        
         this.setState({ 
             videos: response.data.items,
-            //Valitsee taulun 1. videon.
+            //Valitsee soittimen oletukseksi taulun 1. videon.
             selectedVideo: response.data.items[0]
         });
     };
 
+    //Päivitetään valitun videon tila, kun käyttäjä klikkaa listan videota.
     onVideoSelect = (video) => {
         this.setState({ selectedVideo: video });
     }
@@ -32,19 +33,11 @@ class App extends React.Component {
     render() {
         return (
             <div className="ui container">
-                <SearchBar onFormSubmit={this.onSearchSubmit} />
-                <div className="ui grid">
-                    <div className="ui row">
-                        <div className="eleven wide column">
-                            <VideoDetail video={this.state.selectedVideo} />
-                        </div>
-                        <div className="five wide column">
-                            <VideoList onVideoSelect={this.onVideoSelect} 
-                                    videos={this.state.videos} 
-                            />
-                        </div>                      
-                    </div>                   
-                </div>                
+                <SearchBar onFormSubmit={this.onSearchSubmit} />                              
+                <VideoDetail video={this.state.selectedVideo} />
+                <VideoList onVideoSelect={this.onVideoSelect} 
+                           videos={this.state.videos} 
+                />                              
             </div>
         );
     }

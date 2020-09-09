@@ -17,10 +17,10 @@ class SearchBar extends React.Component {
 
     render() {
         return(
-            <div className="search-bar ui segment">
+            <div className="search-bar ui segment" maxLength="2">
                 <form onSubmit={this.onFormSubmit} className="ui form">
                     <div className="field">
-                        <label>Videohaku</label>
+                        <label>YouTube videohaku</label>
                         <input 
                             type="text" 
                             value={this.state.search}
